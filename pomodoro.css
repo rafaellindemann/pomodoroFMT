@@ -1,0 +1,28 @@
+
+body{
+    align-items: center;
+    text-align: center;
+}
+.title{
+    text-align: center;
+    font-size: 50px;
+}
+.subtitle{
+    text-align: center;
+}
+.img{
+    text-align: center;
+    align-items: center;
+    width: 20px;
+    height: 40px;
+}
+.pmdr{
+    width: 300px;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.btn{
+    margin-top: 10px;
+}
