@@ -2,6 +2,12 @@
 body{
     align-items: center;
     text-align: center;
+    font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
 }
 .title{
     text-align: center;
@@ -25,4 +31,53 @@ body{
 }
 .btn{
     margin-top: 10px;
+}body {
+    align-items: center;
+    text-align: center;
+    display: flex;
+}
+
+.title {
+    text-align: center;
+    font-size: 50px;
+}
+
+.subtitle {
+    text-align: center;
+}
+
+.img {
+    text-align: center;
+    align-items: center;
+    width: 20px;
+    height: 40px;
+}
+
+.pmdr {
+    width: 300px;
+    height: auto;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+/*segunda parte*/ 
+
+.container {
+    text-align: center;
+}
+
+.timer {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    font-size: 16px;
+    padding: 8px 16px;
+    margin: 0 10px;
 }
