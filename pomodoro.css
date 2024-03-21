@@ -1,20 +1,42 @@
 
 body{
-    align-items: center;
+    justify-content: center;
     text-align: center;
     font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+    background-color: #1d2d5c;
+}
+.main{
+    flex-direction: column;
+    margin-top: 0px;
+}
+.global{
+    margin-top: 5px;
+    padding-top: 0px;
+    display: flex;
+    background-color: #a59afc;
+    color: #122921;
 }
 .title{
     text-align: center;
     font-size: 50px;
+    padding-left: 25px;
+    text-shadow:
+    -2px -2px 0 #146d88,
+    2px -2px 0 #146d88,
+    -2px 2px 0 #146d88,
+    2px 2px 0 #146d88;
 }
 .subtitle{
     text-align: center;
+    color: #146d88;
+    text-shadow:
+            -1px -1px 0 white,
+            1px -1px 0 white,
+            -1px 1px 0 white,
+            1px 1px 0 white;
 }
 .img{
     text-align: center;
@@ -29,14 +51,6 @@ body{
     text-align: center;
     transition: all 0.3s ease;
 }
-.btn{
-    margin-top: 10px;
-}body {
-    align-items: center;
-    text-align: center;
-    display: flex;
-}
-
 .title {
     text-align: center;
     font-size: 50px;
@@ -51,6 +65,7 @@ body{
     align-items: center;
     width: 20px;
     height: 40px;
+    padding-left: 25px;
 }
 
 .pmdr {
@@ -68,16 +83,34 @@ body{
 /*segunda parte*/ 
 
 .container {
-    text-align: center;
+    margin-left: 200px;
+    margin-top: 40px;
 }
 
 .timer {
     font-size: 48px;
     margin-bottom: 20px;
+    padding-right: 25px;
 }
 
 .controls button {
     font-size: 16px;
     padding: 8px 16px;
     margin: 0 10px;
+    border-radius: 8px;
+    background-color: #1d2d5c;
+    color: #a59afc;
+    text-shadow:
+            -1px -1px 0 #1d3222,
+            1px -1px 0 #1d3222,
+            -1 1px 0 #1d3222,
+            1px 1px 0 #1d3222;
+}
+.materials{
+    display:  flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 20px;
+    padding-top: 5px;
+
 }

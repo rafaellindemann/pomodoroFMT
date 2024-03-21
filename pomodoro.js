@@ -1,5 +1,7 @@
 function pomodoro(){
      var image = document.getElementById('image');
+     let text = document.getElementById('txt')
+     text.textContent="Lets study"
     if (image.src.match("assets/initial.png")) {
       image.src = "assets/study.jpg";
       image.alt = "Imagem 2";
@@ -7,50 +9,26 @@ function pomodoro(){
       image.src = "imagem1.jpg";
       image.alt = "Imagem 1";
     }
-    setTimeout(function() {
-     alongar();
-    },10000);
 }
 async function alongar(){
-    setTimeout(function() {
   var image = document.getElementById("image");
+  let text = document.getElementById("txt");
+  text.textContent = "let's stretch and rest";
   if (image.src.match("assets/study.jpg")) {
     image.src = "assets/alongamentos.jpg";
     image.alt = "Imagem 3";}
-  }, 3000);}
-
- function pomodoro(){
-     var image = document.getElementById('image');
-    if (image.src.match("assets/initial.png")) {
-      image.src = "assets/study.jpg";
-      image.alt = "Imagem 2";
-    } else {
-      image.src = "imagem1.jpg";
-      image.alt = "Imagem 1";
-    }
-    setTimeout(function() {
-     alongar();
-    },10000);
-}
-async function alongar(){
-    setTimeout(function() {
-  var image = document.getElementById("image");
-  if (image.src.match("assets/study.jpg")) {
-    image.src = "assets/alongamentos.jpg";
-    image.alt = "Imagem 3";}
-  }, 1000);}
-
+  }
   //Parte time Rafael//
 let timer;
 
-let minutesWork = 1;
-let secondsWork = 22;
-let minutesRest = 1;
-let secondsRest = 9;
+let minutesWork = 25;
+let secondsWork = 0;
+let minutesRest = 5;
+let secondsRest = 0;
 let minutes = minutesWork;
 let seconds = secondsWork;
 let state = 'work' // | 'rest'
-let oneSecond = 50; // 1000
+let oneSecond = 10; // 1000
 
 function startTimer() {
   pomodoro();
