@@ -23,20 +23,10 @@ body{
     text-align: center;
     font-size: 50px;
     padding-left: 25px;
-    text-shadow:
-    -2px -2px 0 #146d88,
-    2px -2px 0 #146d88,
-    -2px 2px 0 #146d88,
-    2px 2px 0 #146d88;
 }
 .subtitle{
     text-align: center;
     color: #146d88;
-    text-shadow:
-            -1px -1px 0 white,
-            1px -1px 0 white,
-            -1px 1px 0 white,
-            1px 1px 0 white;
 }
 .img{
     text-align: center;
@@ -49,39 +39,10 @@ body{
     height: auto;
     align-items: center;
     text-align: center;
-    transition: all 0.3s ease;
 }
-.title {
-    text-align: center;
-    font-size: 50px;
-}
-
-.subtitle {
-    text-align: center;
-}
-
-.img {
-    text-align: center;
-    align-items: center;
-    width: 20px;
-    height: 40px;
-    padding-left: 25px;
-}
-
-.pmdr {
-    width: 300px;
-    height: auto;
-    align-items: center;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
 .btn {
     margin-top: 10px;
 }
-
-/*segunda parte*/ 
-
 .container {
     margin-left: 200px;
     margin-top: 40px;
@@ -100,11 +61,6 @@ body{
     border-radius: 8px;
     background-color: #1d2d5c;
     color: #a59afc;
-    text-shadow:
-            -1px -1px 0 #1d3222,
-            1px -1px 0 #1d3222,
-            -1 1px 0 #1d3222,
-            1px 1px 0 #1d3222;
 }
 .materials{
     display:  flex;
