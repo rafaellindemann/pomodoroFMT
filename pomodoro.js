@@ -27,7 +27,7 @@ function alongar() {
 
 function startStudyTimer() {
   pomodoro();
-  let minutes = 10;
+  let minutes = 0;
   let seconds = 50;
 
   document.getElementById("startStudyButton").disabled = true;
@@ -90,13 +90,6 @@ document
   .addEventListener("click", startRestTimer);
 document.getElementById("pauseButton").addEventListener("click", pauseTimer);
 
-
-
-
-
-
-
-//here
 function pomodoro() {
   let inner = document.getElementById("inner");
   inner.textContent = "Let´s study";
