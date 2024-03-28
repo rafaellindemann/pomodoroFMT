@@ -33,18 +33,19 @@ function startStudyTimer() {
   document.getElementById("startStudyButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
 
-  timer = setInterval(function () {
-    if (seconds === 0 && minutes === 0) {
-      clearInterval(timer);
-      document.getElementById("startRestButton").disabled = false;
-    } else if (seconds === 0) {
-      seconds = 59;
-      minutes--;
-    } else {
-      seconds--;
-    }
-    updateTimerDisplay(minutes, seconds);
-  }, oneSecond);
+ timer = setInterval(function () {
+   if (seconds === 0 && minutes === 0) {
+     clearInterval(timer);
+     document.getElementById("startRestButton").disabled = false;
+     alert("Fim do tempo de estudo!");
+   } else if (seconds === 0) {
+     seconds = 59;
+     minutes--;
+   } else {
+     seconds--;
+   }
+   updateTimerDisplay(minutes, seconds);
+ }, oneSecond);
 }
 
 function startRestTimer() {
@@ -58,6 +59,7 @@ function startRestTimer() {
     if (seconds === 0 && minutes === 0) {
       clearInterval(timer);
       document.getElementById("startStudyButton").disabled = false;
+      alert("Fim do tempo de descanso!");
     } else if (seconds === 0) {
       seconds = 59;
       minutes--;
@@ -73,6 +75,10 @@ function pauseTimer() {
   document.getElementById("startStudyButton").disabled = false;
   document.getElementById("startRestButton").disabled = false;
   document.getElementById("pauseButton").disabled = true;
+  remainingTime = {
+    minutes: parseInt(document.getElementById("minutes").textContent),
+    seconds: parseInt(document.getElementById("seconds").textContent),
+  };
 }
 
 function updateTimerDisplay(minutes, seconds) {
