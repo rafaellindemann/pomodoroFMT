@@ -1,3 +1,17 @@
+let exercises = ["arroz", "feijão", 'batata'];
+function getExercise() {
+  fetch("https://api.api-ninjas.com/v1/exercises?type=stretching", {
+    method: "GET",
+    headers: { "X-Api-Key": "my api" },
+    contentType: "application/json",
+  })
+    .then((response) => response.json())
+    .then((dados) => {
+      console.log(dados);
+      exercises = dados;
+    })
+    .catch((error) => console.log(error));
+}
 let timer;
 let minutesWork = 25;
 let secondsWork = 0;
@@ -5,36 +19,37 @@ let minutesRest = 5;
 let secondsRest = 0;
 let minutes = minutesWork;
 let seconds = secondsWork;
-let state = 'work' // | 'rest'
+let state = "work"; // | 'rest'
 let oneSecond = 10; // 1000
-function pomodoro(){
-     var image = document.getElementById('image');
-     let text = document.getElementById('txt')
-     text.textContent="Lets study"
-    if (image.src.match("assets/initial.png")) {
-      image.src = "assets/study.jpg";
-      image.alt = "Imagem 2";
-    }
+
+function pomodoro() {
+  let inner = document.getElementById("inner");
+  inner.textContent = "Let´s study";
 }
-async function alongar(){
-  var image = document.getElementById("image");
-  let text = document.getElementById("txt");
-  text.textContent = "let's stretch and rest";
-  if (image.src.match("assets/study.jpg")) {
-    image.src = "assets/alongamentos.jpg";
-    image.alt = "Imagem 3";}
-  }
+
+function alongar() {
+  let i = 0;
+  let inner = document.getElementById("inner");
+inner.textContent = `o alongamento é ${exercises[i]}`;
+function doneExercise() {
+  i++;
+  inner.textContent = `o alongamento é ${exercises[i]}`;
+}
+}
+
 function startTimer() {
   pomodoro();
-    if(state === 'work'){
-        minutes = minutesWork;
-        seconds = secondsWork;
-   }else if(state === 'rest'){
+  if (state === "work") {
+    minutes = minutesWork;
+    seconds = secondsWork;
+  } else if (state === "rest") {
     alongar();
-        minutes = minutesRest;
-        seconds = secondsRest;
-    }
+    minutes = minutesRest;
+    seconds = secondsRest;
+  }
   timer = setInterval(updateTimer, oneSecond);
+
+
 }
 function startTimerRest() {
   alongar();
@@ -55,25 +70,25 @@ function pauseTimer() {
 }
 
 function updateTimer() {
-  const minutos = document.getElementById('minutes')
-  const segundos = document.getElementById('seconds')
+  const minutos = document.getElementById("minutes");
+  const segundos = document.getElementById("seconds");
   if (seconds === 0) {
     if (minutes === 0) {
-        clearInterval(timer);
-        if(state === 'work'){
-            alert('End of the WORK!');
-            state = 'rest'
-            document.getElementById('startWork').setAttribute('disabled', true)
-            document.getElementById('startRest').removeAttribute('disabled');
-            document.getElementById('startRest').focus()
-        }else if(state === 'rest'){
-            alert('End of the REST!');
-            state = 'work'
-            document.getElementById('startWork').removeAttribute('disabled');
-            document.getElementById('startWork').focus()
-            document.getElementById('startRest').setAttribute('disabled', true)
-        }
-        return;
+      clearInterval(timer);
+      if (state === "work") {
+        alert("End of the WORK!");
+        state = "rest";
+        document.getElementById("startWork").setAttribute("disabled", true);
+        document.getElementById("startRest").removeAttribute("disabled");
+        document.getElementById("startRest").focus();
+      } else if (state === "rest") {
+        alert("End of the REST!");
+        state = "work";
+        document.getElementById("startWork").removeAttribute("disabled");
+        document.getElementById("startWork").focus();
+        document.getElementById("startRest").setAttribute("disabled", true);
+      }
+      return;
     }
     minutes--;
     seconds = 60;
@@ -81,39 +96,47 @@ function updateTimer() {
     seconds--;
   }
 
-//   timerDisplay.innerText = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};
-  minutos.innerText = `${minutes.toString().padStart(2, '0')}`;
-  segundos.innerText = `${seconds.toString().padStart(2, '0')}`;
+  //   timerDisplay.innerText = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};
+  minutos.innerText = `${minutes.toString().padStart(2, "0")}`;
+  segundos.innerText = `${seconds.toString().padStart(2, "0")}`;
 }
 
 function resetTimer() {
   clearInterval(timer);
-  if(state === 'work'){
-      minutes = minutesWork;
-      seconds = secondsWork;
-    }else if(state === 'rest'){
-      minutes = minutesRest;
-      seconds = secondsRest;
+  if (state === "work") {
+    minutes = minutesWork;
+    seconds = secondsWork;
+  } else if (state === "rest") {
+    minutes = minutesRest;
+    seconds = secondsRest;
   }
-  document.getElementById('minutes').innerText = `${minutes.toString().padStart(2, '0')}`;
-  document.getElementById('seconds').innerText = `${seconds.toString().padStart(2, '0')}`;
+  document.getElementById("minutes").innerText = `${minutes
+    .toString()
+    .padStart(2, "0")}`;
+  document.getElementById("seconds").innerText = `${seconds
+    .toString()
+    .padStart(2, "0")}`;
 }
 
-//add function
-function  pause(){
-   cronometro.pause();
-};
-
+function pause() {
+  cronometro.pause();
+}
 document.getElementById("startWork").addEventListener("click", startTimer);
-document.getElementById('startRest').addEventListener('click', startTimerRest);
-pauseButton.addEventListener("click", pauseTimer);
-// document.getElementById('reset').addEventListener('click', resetTimer);
+document.getElementById("startRest").disabled = true.addEventListener(
+  "click",startTimerRest);
+document.getElementById("pauseButton").disabled = true.addEventListener(
+  "click",pauseTimer);
+  document.getElementById("done").disabled = true.addEventListener(
+    "click",doneExercise);
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Sua função aqui
-    document.getElementById('minutes').innerText = `${minutesWork.toString().padStart(2, '0')}`;
-    document.getElementById('seconds').innerText = `${secondsWork.toString().padStart(2, '0')}`;
-    document.getElementById('startWork').removeAttribute('disabled');
-    document.getElementById('startRest').setAttribute('disabled', true)
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("minutes").innerText = `${minutesWork
+    .toString()
+    .padStart(2, "0")}`;
+  document.getElementById("seconds").innerText = `${secondsWork
+    .toString()
+    .padStart(2, "0")}`;
+  document.getElementById("startWork").removeAttribute("disabled");
+  document.getElementById("startRest").setAttribute("disabled", true);
 });
