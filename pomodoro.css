@@ -48,7 +48,7 @@ body{
     margin-top: 40px;
 }
 
-.timer {
+#timer {
     font-size: 48px;
     margin-bottom: 20px;
     padding-right: 25px;
