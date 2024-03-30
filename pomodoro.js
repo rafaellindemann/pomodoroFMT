@@ -1,4 +1,4 @@
-let exercises = ["arroz", "feijão", "batata"];
+let exercises = ["biceps", "triceps", "panturrilha", "antebraço"];
 let ex = 0;
 let offset = 0
 function getExercise() {
@@ -27,9 +27,8 @@ function alongar() {
 
 function startStudyTimer() {
   pomodoro();
-  let minutes = 0;
-  let seconds = 50;
-
+      let minutes = remainingTime.minutes || 25;
+      let seconds = remainingTime.seconds || 0;
   document.getElementById("startStudyButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
 
@@ -50,8 +49,8 @@ function startStudyTimer() {
 
 function startRestTimer() {
   alongar()
-  let minutes = 0;
-  let seconds = 25;
+  let minutes = 5;
+  let seconds = 0;
   document.getElementById("startRestButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
   document.getElementById("done").disabled = false;
