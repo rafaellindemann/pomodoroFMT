@@ -88,21 +88,6 @@ function updateTimerDisplay(minutes, seconds) {
   secondsElement.textContent = seconds < 10 ? `0${seconds}` : seconds;
 }
 
-document
-  .getElementById("startStudyButton")
-  .addEventListener("click", startStudyTimer);
-document.getElementById("startRestButton").disabled = true
-.addEventListener(
-  "click",
-  startRestTimer
-);
-
-document.getElementById("pauseButton").disabled = true.
-addEventListener(
-  "click",
-  pauseTimer
-);
-
 function pomodoro() {
   let inner = document.getElementById("inner");
   inner.textContent = "Let´s study";
@@ -113,6 +98,19 @@ function alongar() {
   inner.textContent = `alongamento: ${exercises[ex].name}`;
   describe.textContent = `como fazer: ${exercises[ex].intructions}`;
 }
+
+document
+  .getElementById("startStudyButton")
+  .addEventListener("click", startStudyTimer);
+document.getElementById("startRestButton").disabled = true.addEventListener(
+  "click",
+  startRestTimer
+);
+
+document.getElementById("pauseButton").disabled = true.addEventListener(
+  "click",
+  pauseTimer
+);
 
 document.getElementById("done").disabled = true
 .addEventListener("click", () =>{
