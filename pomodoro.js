@@ -18,12 +18,14 @@ function getExercise() {
     .catch((error) => console.log(error));
 }
 let timer;
-let oneSecond = 100; // 1 segundo
+let oneSecond = 100;
+let studyTime = 25; 
+let restTime = 5;
 
 function startStudyTimer() {
   pomodoro();
   document.getElementById("pauseButton").disabled = false;
-      let minutes = remainingTime.minutes || 25;
+      let minutes = remainingTime.minutes || studyTime;
       let seconds = remainingTime.seconds || 0;
   document.getElementById("startStudyButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
@@ -46,7 +48,7 @@ function startStudyTimer() {
 function startRestTimer() {
   alongar()
   document.getElementById("pauseButton").disabled = false;
-  let minutes = remainingTime.minutes || 5;
+  let minutes = remainingTime.minutes || restTime;
   let seconds = remainingTime.seconds || 0;
   document.getElementById("startRestButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
@@ -89,10 +91,17 @@ function updateTimerDisplay(minutes, seconds) {
 document
   .getElementById("startStudyButton")
   .addEventListener("click", startStudyTimer);
-document
-  .getElementById("startRestButton")
-  .addEventListener("click", startRestTimer);
-document.getElementById("pauseButton").addEventListener("click", pauseTimer);
+document.getElementById("startRestButton").disabled = true
+.addEventListener(
+  "click",
+  startRestTimer
+);
+
+document.getElementById("pauseButton").disabled = true.
+addEventListener(
+  "click",
+  pauseTimer
+);
 
 function pomodoro() {
   let inner = document.getElementById("inner");
@@ -105,12 +114,6 @@ function alongar() {
   describe.textContent = `como fazer: ${exercises[ex].intructions}`;
 }
 
-document.getElementById("startRestButton").disabled = true;
-document.getElementById("pauseButton").disabled = true
-.addEventListener(
-  "click",
-  pauseTimer
-);
 document.getElementById("done").disabled = true
 .addEventListener("click", () =>{
 alongar()
