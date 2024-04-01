@@ -1,12 +1,15 @@
-let exercises = ["biceps", "triceps", "panturrilha", "antebraço"];
+let exercises = [];
 let ex = 0;
 let offset = 0
 function getExercise() {
-  fetch("https://api.api-ninjas.com/v1/exercises?type=stretching&offset="+offset, {
-    method: "GET",
-    headers: { "X-Api-Key": "my api" },
-    contentType: "application/json",
-  })
+  fetch(
+    "https://api.api-ninjas.com/v1/exercises?type=stretching&offset=" + offset,
+    {
+      method: "GET",
+      headers: { "X-Api-Key": "my api" },
+      contentType: "application/json",
+    }
+  )
     .then((response) => response.json())
     .then((dados) => {
       console.log(dados);
