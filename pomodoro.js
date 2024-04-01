@@ -20,14 +20,6 @@ function getExercise() {
 let timer;
 let oneSecond = 100; // 1 segundo
 
-function alongar() {
-  let i = 0;
-  let inner = document.getElementById("inner");
-  let describe = document.getElementById('descricao')
-  inner.textContent = `alongamento: ${exercises[ex].name}`;
-  describe.textContent =`como fazer: ${exercises[ex].intructions}`
-}
-
 function startStudyTimer() {
   pomodoro();
   document.getElementById("pauseButton").disabled = false;
@@ -58,6 +50,7 @@ function startRestTimer() {
   let seconds = remainingTime.seconds || 0;
   document.getElementById("startRestButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
+  updateTimerDisplay(minutes, seconds);
 
   timer = setInterval(function () {
     if (seconds === 0 && minutes === 0) {
@@ -73,6 +66,7 @@ function startRestTimer() {
     updateTimerDisplay(minutes, seconds);
   }, oneSecond);
 }
+
 
 function pauseTimer() {
   clearInterval(timer);
@@ -104,14 +98,21 @@ function pomodoro() {
   let inner = document.getElementById("inner");
   inner.textContent = "Let´s study";
 }
+function alongar() {
+  let inner = document.getElementById("inner");
+  let describe = document.getElementById("descricao");
+  inner.textContent = `alongamento: ${exercises[ex].name}`;
+  describe.textContent = `como fazer: ${exercises[ex].intructions}`;
+}
+
 document.getElementById("startRestButton").disabled = true;
-document.getElementById("done").disabled = true;
 document.getElementById("pauseButton").disabled = true
 .addEventListener(
   "click",
   pauseTimer
 );
-document.getElementById("done").addEventListener("click", () =>{
+document.getElementById("done").disabled = true
+.addEventListener("click", () =>{
 alongar()
 if (ex === 9){
   offset +=10
