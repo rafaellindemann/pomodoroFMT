@@ -6,7 +6,7 @@ function getExercise() {
     "https://api.api-ninjas.com/v1/exercises?type=stretching&offset=" + offset,
     {
       method: "GET",
-      headers: { "X-Api-Key": "my api" },
+      headers: { "X-Api-Key": "My api" },
       contentType: "application/json",
     }
   )
@@ -30,6 +30,7 @@ function alongar() {
 
 function startStudyTimer() {
   pomodoro();
+  document.getElementById("pauseButton").disabled = false;
       let minutes = remainingTime.minutes || 25;
       let seconds = remainingTime.seconds || 0;
   document.getElementById("startStudyButton").disabled = true;
@@ -52,11 +53,13 @@ function startStudyTimer() {
 
 function startRestTimer() {
   alongar()
-  let minutes = 5;
-  let seconds = 0;
+  pomodoro();
+  document.getElementById("pauseButton").disabled = false;
+  let minutes = remainingTime.minutes || 25;
+  let seconds = remainingTime.seconds || 0;
   document.getElementById("startRestButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
-  document.getElementById("done").disabled = false;
+
   timer = setInterval(function () {
     if (seconds === 0 && minutes === 0) {
       clearInterval(timer);
@@ -104,7 +107,11 @@ function pomodoro() {
 }
 document.getElementById("startRestButton").disabled = true;
 document.getElementById("done").disabled = true;
-document.getElementById("pauseButton").addEventListener("click", pauseTimer);
+document.getElementById("pauseButton").disabled = true
+.addEventListener(
+  "click",
+  pauseTimer
+);
 document.getElementById("done").addEventListener("click", () =>{
 alongar()
 if (ex === 9){
