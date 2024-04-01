@@ -17,13 +17,13 @@ function getExercise() {
     })
     .catch((error) => console.log(error));
 }
-getExercise();
 let timer;
 let oneSecond = 100;
-let remainingTime = { minutes: 25, seconds: 0 };
+let remainingTime = { minutes, seconds};
 
 function startStudyTimer() {
   pomodoro();
+  remainingTime = { minutes: 25, seconds: 0 };
   document.getElementById("pauseButton").disabled = false;
   document.getElementById("startStudyButton").disabled = true;
   document.getElementById("startRestButton").disabled = true;
