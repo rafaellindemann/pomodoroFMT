@@ -53,9 +53,8 @@ function startStudyTimer() {
 
 function startRestTimer() {
   alongar()
-  pomodoro();
   document.getElementById("pauseButton").disabled = false;
-  let minutes = remainingTime.minutes || 25;
+  let minutes = remainingTime.minutes || 5;
   let seconds = remainingTime.seconds || 0;
   document.getElementById("startRestButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
