@@ -19,13 +19,11 @@ function getExercise() {
 }
 let timer;
 let oneSecond = 100;
-let studyTime = 25; 
-let restTime = 5;
 
 function startStudyTimer() {
   pomodoro();
   document.getElementById("pauseButton").disabled = false;
-      let minutes = remainingTime.minutes || studyTime;
+      let minutes = remainingTime.minutes || 25;
       let seconds = remainingTime.seconds || 0;
   document.getElementById("startStudyButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
@@ -48,7 +46,7 @@ function startStudyTimer() {
 function startRestTimer() {
   alongar()
   document.getElementById("pauseButton").disabled = false;
-  let minutes = remainingTime.minutes || restTime;
+  let minutes = remainingTime.minutes || 5;
   let seconds = remainingTime.seconds || 0;
   document.getElementById("startRestButton").disabled = true;
   document.getElementById("pauseButton").disabled = false;
