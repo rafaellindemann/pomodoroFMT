@@ -54,7 +54,7 @@ body{
     padding-right: 25px;
 }
 
-.controls button {
+.controls{
     font-size: 16px;
     padding: 8px 16px;
     margin: 0 10px;
