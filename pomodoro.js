@@ -9,8 +9,8 @@ function getExercise() {
     "https://api.api-ninjas.com/v1/exercises?type=stretching&offset=" + offset,
     {
       method: "GET",
-      // headers: { "X-Api-Key": "my api" },
-      headers: { "X-Api-Key": "ZYA8ZWp6DUZ8daF0ZMmQVw==D8kQa23UCAirapXD" },
+      headers: { "X-Api-Key": "my api" },
+      
       contentType: "application/json",
     }
   )
