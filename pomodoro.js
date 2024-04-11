@@ -1,12 +1,16 @@
 let exercises = [];
 let ex = 0;
 let offset = 0;
+let pause = false;
+let fimEstudo = false;
+let fimDescanso = false;
 function getExercise() {
   fetch(
     "https://api.api-ninjas.com/v1/exercises?type=stretching&offset=" + offset,
     {
       method: "GET",
-      headers: { "X-Api-Key": "my api" },
+      // headers: { "X-Api-Key": "my api" },
+      headers: { "X-Api-Key": "ZYA8ZWp6DUZ8daF0ZMmQVw==D8kQa23UCAirapXD" },
       contentType: "application/json",
     }
   )
@@ -18,59 +22,77 @@ function getExercise() {
     .catch((error) => console.log(error));
 }
 let timer;
-let oneSecond = 100;
-let remainingTime = { minutes, seconds};
+let oneSecond = 10;
+let remainingTime //= { minutes, seconds};
 
 function startStudyTimer() {
   pomodoro();
+  getExercise();
   remainingTime = { minutes: 25, seconds: 0 };
-  document.getElementById("pauseButton").disabled = false;
-  document.getElementById("startStudyButton").disabled = true;
-  document.getElementById("startRestButton").disabled = true;
+  // document.getElementById("pauseButton").disabled = false;
+  // document.getElementById("startStudyButton").disabled = true;
+  // document.getElementById("startRestButton").disabled = true;
 
   timer = setInterval(function () {
-    if (remainingTime.seconds === 0 && remainingTime.minutes === 0) {
-      clearInterval(timer);
-      document.getElementById("startRestButton").disabled = false;
-      alert("Fim do tempo de estudo!");
-    } else if (remainingTime.seconds === 0) {
-      remainingTime.seconds = 59;
-      remainingTime.minutes--;
-    } else {
-      remainingTime.seconds--;
+    if(!pause)
+    {
+      if (remainingTime.seconds === 0 && remainingTime.minutes === 0) {
+        clearInterval(timer);
+        // document.getElementById("startRestButton").disabled = false;
+        if(!fimEstudo){
+          alert("Fim do tempo de estudo!");
+          fimEstudo = true;
+        }
+      } else if (remainingTime.seconds === 0) {
+        remainingTime.seconds = 59;
+        remainingTime.minutes--;
+      } else {
+        remainingTime.seconds--;
+        fimEstudo = false;
+      }
+      updateTimerDisplay();
     }
-    updateTimerDisplay();
+
   }, oneSecond);
 }
 
 function startRestTimer() {
   alongar();
   remainingTime = { minutes: 5, seconds: 0 };
-  document.getElementById("pauseButton").disabled = false;
-  document.getElementById("startRestButton").disabled = true;
-  document.getElementById("startStudyButton").disabled = true;
+  // document.getElementById("pauseButton").disabled = false;
+  // document.getElementById("startRestButton").disabled = true;
+  // document.getElementById("startStudyButton").disabled = true;
   document.getElementById("done").disabled = false;
 
   timer = setInterval(function () {
-    if (remainingTime.seconds === 0 && remainingTime.minutes === 0) {
-      clearInterval(timer);
-      document.getElementById("startStudyButton").disabled = false;
-      alert("Fim do tempo de descanso!");
-    } else if (remainingTime.seconds === 0) {
-      remainingTime.seconds = 59;
-      remainingTime.minutes--;
-    } else {
-      remainingTime.seconds--;
+    if(!pause)
+    {
+      if (remainingTime.seconds === 0 && remainingTime.minutes === 0) {
+        clearInterval(timer);
+        document.getElementById("startStudyButton").disabled = false;
+        if(!fimDescanso){
+          alert("Fim do tempo de descanso!");
+          fimDescanso = true;
+        }
+      } else if (remainingTime.seconds === 0) {
+        remainingTime.seconds = 59;
+        remainingTime.minutes--;
+      } else {
+        remainingTime.seconds--;
+        fimDescanso = false;
+      }
     }
     updateTimerDisplay();
   }, oneSecond);
 }
 
 function pauseTimer() {
-  clearInterval(timer);
-  document.getElementById("startStudyButton").disabled = false;
-  document.getElementById("startRestButton").disabled = false;
-  document.getElementById("pauseButton").disabled = true;
+  //clearInterval(timer);
+  pause = !pause;
+  console.log(pause);
+  // document.getElementById("startStudyButton").disabled = pause;
+  // document.getElementById("startRestButton").disabled = pause;
+  // document.getElementById("pauseButton").disabled = true;
 }
 
 function updateTimerDisplay() {
@@ -84,24 +106,30 @@ function updateTimerDisplay() {
 
 function pomodoro() {
   let inner = document.getElementById("inner");
+  let describe = document.getElementById("descricao");
   inner.textContent = "Let´s study";
+  describe.textContent = '';
 }
 
 function alongar() {
   let inner = document.getElementById("inner");
   let describe = document.getElementById("descricao");
+  console.log(exercises);
   inner.textContent = `alongamento: ${exercises[ex].name}`;
-  describe.textContent = `Instruções: ${exercises[i].instructions}`;
+  describe.textContent = `Instruções: ${exercises[ex].instructions}`;
+  // describe.textContent = `Instruções: ${exercises[i].instructions}`;
 }
 
 function showExercise() {
   let inner = document.getElementById("inner");
   let describe = document.getElementById("descricao");
   inner.textContent = `alongamento: ${exercises[ex].name}`;
-  describe.textContent = `Instruções: ${exercises[i].instructions}`;
+  describe.textContent = `Instruções: ${exercises[ex].instructions}`;
+  // describe.textContent = `Instruções: ${exercises[i].instructions}`;
 }
 
-document.getElementById("done").disabled = true.addEventListener(
+
+document.getElementById("done").addEventListener(
   "click",
   () => {
     showExercise();
@@ -116,6 +144,8 @@ document.getElementById("done").disabled = true.addEventListener(
     ex++;
   }
 );
+// document.getElementById("done").disabled = true
+
 document
   .getElementById("startStudyButton")
   .addEventListener("click", startStudyTimer);
