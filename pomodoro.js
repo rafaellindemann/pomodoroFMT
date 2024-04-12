@@ -10,7 +10,6 @@ function getExercise() {
     {
       method: "GET",
       headers: { "X-Api-Key": "my api" },
-      
       contentType: "application/json",
     }
   )
